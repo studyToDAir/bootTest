@@ -13,7 +13,7 @@ RUN gradle build -x test --parallel
 FROM openjdk:11.0-slim
 WORKDIR /app
 
-# 빌더 이미지에서 jar 파일만 복사
+# 빌더 이미지에서 jar 파일만 복사한다
 # COPY --from=builder /build/build/libs/*-SNAPSHOT.jar ./app.jar
 COPY --from=builder /build/build/libs/Ex09-0.0.1-SNAPSHOT.jar .
 
@@ -26,5 +26,5 @@ ENTRYPOINT [                                                \
    "-jar",                                                 \
    "-Djava.security.egd=file:/dev/./urandom",              \
    "-Dsun.net.inetaddr.ttl=0",                             \
-   "Ex09-0.0.1-SNAPSHOT.jar"             \  #또는 "app.jar"
+   "Ex09-0.0.1-SNAPSHOT.jar" \            
 ]
