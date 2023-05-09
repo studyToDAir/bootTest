@@ -7,7 +7,7 @@ COPY . /build
 
 RUN gradle build -x test --parallel --stacktrace
 
-FROM openjdk:11.0-slim
+FROM openjdk:17-slim
 
 WORKDIR /app
 
