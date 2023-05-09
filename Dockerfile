@@ -1,11 +1,19 @@
-# APP
+FROM gradle:latest as builder
+
+WORKDIR /build
+
+COPY build.gradle settings.gradle /build/
+COPY . /build
+
+RUN gradle build -x test --parallel --stacktrace
+
 FROM openjdk:11.0-slim
 
 WORKDIR /app
 
-# 빌더 이미지에서 jar 파일만 복사한다
-COPY build/libs/*.war /app/app.war
+COPY --from=builder /build/build/libs/*.war app.war
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.war"]
+USER nobody
+ENTRYPOINT ["java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "-Dsun.net.inetaddr.ttl=0", "app.jar"]
