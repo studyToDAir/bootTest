@@ -16,4 +16,4 @@ COPY --from=builder /build/build/libs/*.war app.war
 EXPOSE 8080
 
 USER nobody
-ENTRYPOINT ["java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "-Dsun.net.inetaddr.ttl=0", "app.jar"]
+ENTRYPOINT ["java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "-Dsun.net.inetaddr.ttl=0", "app.war"]
