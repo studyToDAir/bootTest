@@ -35,6 +35,4 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootWar {
-    mainClassName = 'com.study.springboot.Ex09ValidatorApplication'
-}
+
