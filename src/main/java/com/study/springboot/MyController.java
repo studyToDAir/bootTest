@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyController {
 
+	@RequestMapping("/")
+	public String test() {
+		System.out.println("/ 접속완료");
+		return "createPage";
+		
+	}
 	@RequestMapping("/insertForm")
 	public String insert1() {
 		
